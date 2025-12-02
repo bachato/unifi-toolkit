@@ -179,7 +179,7 @@ Old `.env` settings map to new ones:
 
 ### Docker Compose
 
-Key changes in `docker-compose.yml`:
+Key changes in `docker compose.yml`:
 
 - **Service name**: `wifi-stalker` → `unifi-toolkit`
 - **Container name**: `wifi-stalker` → `unifi-toolkit`
@@ -238,7 +238,7 @@ docker compose build --no-cache
 
 **Problem**: "Address already in use"
 
-**Solution**: Either stop the old Wi-Fi Stalker or change the port in `docker-compose.yml`:
+**Solution**: Either stop the old Wi-Fi Stalker or change the port in `docker compose.yml`:
 ```yaml
 ports:
   - "8001:8000"  # Use port 8001 instead

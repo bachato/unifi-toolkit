@@ -178,13 +178,13 @@ main() {
     echo ""
 
     # Check if running in Docker
-    if [ -f "docker-compose.yml" ] && command -v docker-compose &> /dev/null; then
+    if [ -f "docker-compose.yml" ] && command -v docker &> /dev/null; then
         echo "To apply the new password, restart the application:"
         echo ""
         if [ "$DEPLOYMENT_TYPE" == "production" ]; then
-            echo "  ${CYAN}docker-compose --profile production restart${NC}"
+            echo "  ${CYAN}docker compose --profile production restart${NC}"
         else
-            echo "  ${CYAN}docker-compose restart${NC}"
+            echo "  ${CYAN}docker compose restart${NC}"
         fi
     else
         echo "To apply the new password, restart the application:"

@@ -18,11 +18,11 @@ BOLD='\033[1m'
 # Functions
 print_banner() {
     echo ""
-    echo -e "${BLUE}╔═══════════════════════════════════════════════════════════════╗${NC}"
-    echo -e "${BLUE}║${NC}             ${BOLD}UI Toolkit - Installation Wizard${NC}                 ${BLUE}║${NC}"
-    echo -e "${BLUE}║${NC}                                                               ${BLUE}║${NC}"
-    echo -e "${BLUE}║${NC}           Network Management Tools for UniFi                  ${BLUE}║${NC}"
-    echo -e "${BLUE}╚═══════════════════════════════════════════════════════════════╝${NC}"
+    echo -e "${BLUE}=================================================================${NC}"
+    echo -e "${BLUE}          ${BOLD}UI Toolkit - Installation Wizard${NC}"
+    echo -e "${BLUE}"
+    echo -e "        Network Management Tools for UniFi"
+    echo -e "${BLUE}=================================================================${NC}"
     echo ""
 }
 
@@ -226,15 +226,15 @@ main() {
         echo ""
 
         # Security notice
-        echo -e "${YELLOW}╔═══════════════════════════════════════════════════════════════╗${NC}"
-        echo -e "${YELLOW}║${NC}  ${BOLD}IMPORTANT: Network Security${NC}                                  ${YELLOW}║${NC}"
-        echo -e "${YELLOW}╠═══════════════════════════════════════════════════════════════╣${NC}"
-        echo -e "${YELLOW}║${NC}  When managing multiple UniFi sites, always use site-to-site  ${YELLOW}║${NC}"
-        echo -e "${YELLOW}║${NC}  VPN connections. Never expose UniFi controllers directly to  ${YELLOW}║${NC}"
-        echo -e "${YELLOW}║${NC}  the internet via port forwarding.                            ${YELLOW}║${NC}"
-        echo -e "${YELLOW}║${NC}                                                               ${YELLOW}║${NC}"
-        echo -e "${YELLOW}║${NC}  Recommended: WireGuard, IPSec, Tailscale, or UniFi VPN       ${YELLOW}║${NC}"
-        echo -e "${YELLOW}╚═══════════════════════════════════════════════════════════════╝${NC}"
+        echo -e "${YELLOW}=================================================================${NC}"
+        echo -e "${YELLOW}  ${BOLD}IMPORTANT: Network Security${NC}"
+        echo -e "${YELLOW}=================================================================${NC}"
+        echo -e "${YELLOW}  When managing multiple UniFi sites, always use site-to-site"
+        echo -e "  VPN connections. Never expose UniFi controllers directly to"
+        echo -e "  the internet via port forwarding."
+        echo -e ""
+        echo -e "  Recommended: WireGuard, IPSec, Tailscale, or UniFi VPN${NC}"
+        echo -e "${YELLOW}=================================================================${NC}"
         echo ""
 
         # Domain name
@@ -402,9 +402,9 @@ EOF
 
     # Final instructions
     echo ""
-    echo -e "${GREEN}════════════════════════════════════════════════════════════════${NC}"
-    echo -e "${GREEN}                     Setup Complete!                            ${NC}"
-    echo -e "${GREEN}════════════════════════════════════════════════════════════════${NC}"
+    echo -e "${GREEN}=================================================================${NC}"
+    echo -e "${GREEN}                     Setup Complete!${NC}"
+    echo -e "${GREEN}=================================================================${NC}"
     echo ""
 
     if [ "$DEPLOYMENT_TYPE" == "production" ]; then
@@ -417,7 +417,7 @@ EOF
         echo "     ${CYAN}sudo ufw allow 443/tcp${NC}"
         echo ""
         echo "  3. Start the application with Caddy (HTTPS + Auth):"
-        echo "     ${CYAN}docker-compose --profile production up -d${NC}"
+        echo "     ${CYAN}docker compose --profile production up -d${NC}"
         echo ""
         echo "  4. Access your toolkit at:"
         echo "     ${CYAN}https://$DOMAIN${NC}"
@@ -434,7 +434,7 @@ EOF
         echo -e "${BOLD}Next Steps:${NC}"
         echo ""
         echo "  1. Start the application:"
-        echo "     ${CYAN}docker-compose up -d${NC}"
+        echo "     ${CYAN}docker compose up -d${NC}"
         echo ""
         echo "     Or run directly with Python:"
         echo "     ${CYAN}pip install -r requirements.txt${NC}"

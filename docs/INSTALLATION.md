@@ -33,8 +33,8 @@ UI Toolkit can run either with Docker (recommended) or directly with Python.
 # Update package list
 sudo apt update
 
-# Install Docker
-sudo apt install -y docker.io docker-compose
+# Install Docker and Docker Compose plugin
+sudo apt install -y docker.io docker-compose-plugin
 
 # Add your user to the docker group (avoids needing sudo)
 sudo usermod -aG docker $USER
@@ -44,7 +44,7 @@ newgrp docker
 
 # Verify Docker is working
 docker --version
-docker-compose --version
+docker compose version
 ```
 
 #### Option B: Python Installation (Alternative)
@@ -117,10 +117,10 @@ Select deployment type [1-2]: 1
 
 ```bash
 # Build and start the container
-docker-compose up -d
+docker compose up -d
 
 # View logs (optional)
-docker-compose logs -f
+docker compose logs -f
 
 # Stop viewing logs with Ctrl+C
 ```
@@ -221,10 +221,10 @@ nslookup toolkit.yourdomain.com
 
 ```bash
 # Build and start with production profile (includes Caddy)
-docker-compose --profile production up -d
+docker compose --profile production up -d
 
 # View logs to monitor certificate acquisition
-docker-compose logs -f caddy
+docker compose logs -f caddy
 
 # Stop viewing logs with Ctrl+C
 ```
@@ -239,7 +239,7 @@ On first startup, Caddy will automatically:
 This may take 1-2 minutes. You can monitor progress:
 
 ```bash
-docker-compose logs -f caddy
+docker compose logs -f caddy
 ```
 
 Look for: `certificate obtained successfully`
@@ -286,21 +286,21 @@ After configuring, click **Test Connection** to verify connectivity.
 
 ```bash
 # Start the application
-docker-compose up -d                          # Local mode
-docker-compose --profile production up -d     # Production mode
+docker compose up -d                          # Local mode
+docker compose --profile production up -d     # Production mode
 
 # Stop the application
-docker-compose down
+docker compose down
 
 # View logs
-docker-compose logs -f
+docker compose logs -f
 
 # Restart the application
-docker-compose restart
+docker compose restart
 
 # Rebuild after updates
-docker-compose build
-docker-compose up -d
+docker compose build
+docker compose up -d
 ```
 
 ### Python Commands
@@ -324,7 +324,7 @@ cd /opt/unifi-toolkit
 ./reset_password.sh
 
 # Restart to apply changes
-docker-compose --profile production restart
+docker compose --profile production restart
 ```
 
 ---
@@ -337,16 +337,16 @@ docker-compose --profile production restart
 cd /opt/unifi-toolkit
 
 # Stop the application
-docker-compose down
+docker compose down
 
 # Pull latest changes
 git pull origin main
 
 # Rebuild and start
-docker-compose build
-docker-compose up -d                          # Local mode
+docker compose build
+docker compose up -d                          # Local mode
 # OR
-docker-compose --profile production up -d     # Production mode
+docker compose --profile production up -d     # Production mode
 ```
 
 ### Database Migrations
@@ -355,7 +355,7 @@ If the update includes database changes:
 
 ```bash
 # With Docker
-docker-compose exec unifi-toolkit alembic upgrade head
+docker compose exec unifi-toolkit alembic upgrade head
 
 # With Python
 source venv/bin/activate
@@ -370,7 +370,7 @@ alembic upgrade head
 
 **Check logs:**
 ```bash
-docker-compose logs unifi-toolkit
+docker compose logs unifi-toolkit
 ```
 
 **Common issues:**
@@ -396,7 +396,7 @@ curl -k https://192.168.1.1:8443/status
 
 **Check Caddy logs:**
 ```bash
-docker-compose logs caddy
+docker compose logs caddy
 ```
 
 **Common issues:**
@@ -416,13 +416,13 @@ If you see "Too many login attempts":
 **Reset database (loses all data):**
 ```bash
 # Stop application
-docker-compose down
+docker compose down
 
 # Remove database
 rm -f data/unifi_toolkit.db
 
 # Restart
-docker-compose up -d
+docker compose up -d
 ```
 
 ### Permission Errors
@@ -500,7 +500,7 @@ When managing multiple UniFi sites:
 git clone git@github.com:Crosstalk-Solutions/unifi-toolkit.git
 cd unifi-toolkit
 ./setup.sh  # Select 1 for Local
-docker-compose up -d
+docker compose up -d
 # Access: http://localhost:8000
 ```
 
@@ -510,6 +510,6 @@ git clone git@github.com:Crosstalk-Solutions/unifi-toolkit.git
 cd unifi-toolkit
 ./setup.sh  # Select 2 for Production
 sudo ufw allow 80/tcp && sudo ufw allow 443/tcp
-docker-compose --profile production up -d
+docker compose --profile production up -d
 # Access: https://your-domain.com
 ```

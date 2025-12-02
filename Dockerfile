@@ -1,7 +1,7 @@
 # UniFi Toolkit - Multi-stage Docker build
 
 # Stage 1: Build stage
-FROM python:3.12-slim as builder
+FROM python:3.12-slim AS builder
 
 # Set working directory
 WORKDIR /app

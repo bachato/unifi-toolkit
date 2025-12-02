@@ -49,7 +49,7 @@ No authentication, access via `http://localhost:8000`
 
 ```bash
 # Install Docker
-sudo apt update && sudo apt install -y docker.io docker-compose
+sudo apt update && sudo apt install -y docker.io docker-compose-plugin
 sudo usermod -aG docker $USER && newgrp docker
 
 # Clone and setup (requires SSH key access)
@@ -58,7 +58,7 @@ cd unifi-toolkit
 ./setup.sh  # Select 1 for Local
 
 # Start
-docker-compose up -d
+docker compose up -d
 ```
 
 Access at **http://localhost:8000**
@@ -69,7 +69,7 @@ Authentication enabled, HTTPS with Let's Encrypt via Caddy
 
 ```bash
 # Install Docker
-sudo apt update && sudo apt install -y docker.io docker-compose
+sudo apt update && sudo apt install -y docker.io docker-compose-plugin
 sudo usermod -aG docker $USER && newgrp docker
 
 # Clone and setup (requires SSH key access)
@@ -82,7 +82,7 @@ cd unifi-toolkit
 sudo ufw allow 80/tcp && sudo ufw allow 443/tcp
 
 # Start with HTTPS
-docker-compose --profile production up -d
+docker compose --profile production up -d
 ```
 
 Access at **https://your-domain.com**
@@ -103,13 +103,13 @@ Access at **https://your-domain.com**
 
 | Action | Command |
 |--------|---------|
-| Start (local) | `docker-compose up -d` |
-| Start (production) | `docker-compose --profile production up -d` |
-| Stop | `docker-compose down` |
-| View logs | `docker-compose logs -f` |
-| Restart | `docker-compose restart` |
+| Start (local) | `docker compose up -d` |
+| Start (production) | `docker compose --profile production up -d` |
+| Stop | `docker compose down` |
+| View logs | `docker compose logs -f` |
+| Restart | `docker compose restart` |
 | Reset password | `./reset_password.sh` |
-| Update | `git pull && docker-compose build && docker-compose up -d` |
+| Update | `git pull && docker compose build && docker compose up -d` |
 
 ---
 
@@ -222,7 +222,7 @@ Never expose UniFi controllers via port forwarding
 ### Let's Encrypt certificate fails
 - Verify DNS A record points to your server
 - Ensure ports 80 and 443 are open
-- Check Caddy logs: `docker-compose logs caddy`
+- Check Caddy logs: `docker compose logs caddy`
 
 ### Rate limited on login
 - Wait 5 minutes for lockout to expire
@@ -230,8 +230,8 @@ Never expose UniFi controllers via port forwarding
 
 ### Docker issues
 - Verify `.env` exists and contains `ENCRYPTION_KEY`
-- Check logs: `docker-compose logs -f`
-- Rebuild: `docker-compose build && docker-compose up -d`
+- Check logs: `docker compose logs -f`
+- Rebuild: `docker compose build && docker compose up -d`
 
 ---
 
