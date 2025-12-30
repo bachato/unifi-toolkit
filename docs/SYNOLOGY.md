@@ -96,15 +96,14 @@ LOG_LEVEL=INFO
 
 1. Open **Container Manager**
 2. Go to **Registry** in the left sidebar
-3. In the search box at the top, search for: `ghcr.io/crosstalk-solutions/unifi-toolkit`
-4. If the search doesn't find it, click **Add** → **Add From URL**
-5. Enter the image URL:
+3. Click **Add** → **Add From URL**
+   > Note: The search box only queries Docker Hub. Since UI Toolkit is hosted on GitHub Container Registry, you must use "Add From URL".
+4. Enter the image URL:
    ```
    ghcr.io/crosstalk-solutions/unifi-toolkit:latest
    ```
-6. Click **Add** or **Download**
-7. When prompted for a tag, select `latest`
-8. Wait for the download to complete (shows in the **Image** section)
+5. Click **Add** or **Download**
+6. Wait for the download to complete (shows in the **Image** section)
 
 ---
 
